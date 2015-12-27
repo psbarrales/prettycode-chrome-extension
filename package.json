@@ -1,0 +1,25 @@
+{
+  "name": "prettycode",
+  "version": "0.0.1",
+  "description": "code extension for Facebook",
+  "main": "index.js",
+  "scripts": {
+    "test": "gulp test"
+  },
+  "keywords": [
+    "extension",
+    "chrome",
+    "Facebook",
+    "code",
+    "extension"
+  ],
+  "author": "psbarrales@gmail.com",
+  "license": "MIT",
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-copy": "0.0.2",
+    "gulp-minify-css": "^1.2.2",
+    "gulp-rename": "^1.2.2",
+    "gulp-util": "^3.0.7"
+  }
+}

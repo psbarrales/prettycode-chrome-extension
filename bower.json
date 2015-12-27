@@ -1,0 +1,30 @@
+{
+  "name": "prettycode",
+  "description": "code extension for Facebook",
+  "main": "index.js",
+  "authors": [
+    "psbarrales@gmail.com"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "extension",
+    "chrome",
+    "Facebook",
+    "code",
+    "extension"
+  ],
+  "moduleType": [],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4",
+    "highlightjs": "~9.0.0"
+  }
+}

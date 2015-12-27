@@ -1,0 +1,17 @@
+{
+  "manifest": "manifest.json",
+  "icons": ["icon16.png", "icon48.png", "icon128.png"],
+  "move": {
+    "html": [
+      "options.html"
+    ],
+    "js": [
+      "content_script.js",
+      "options.js"
+    ]
+  },
+  "vendor": [
+    "jquery/dist/jquery.min.js",
+    "highlightjs/highlight.pack.js"
+  ]
+}

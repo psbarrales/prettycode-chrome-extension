@@ -1,0 +1,9 @@
+node_modules
+src/vendor
+src/highlightjs
+build/*
+.idea
+build.*
+
+*~
+.DS_Store
