@@ -20,6 +20,7 @@
     "gulp-copy": "0.0.2",
     "gulp-minify-css": "^1.2.2",
     "gulp-rename": "^1.2.2",
+    "gulp-sass": "^2.1.1",
     "gulp-util": "^3.0.7"
   }
 }
