@@ -1,6 +1,9 @@
 
 var ROOT_ELEMENT_CLASS = ".userContent";
+var COMMENTS_ELEMENT_CLASS = ".UFICommentBody";
 var TEXT_CONTENT_ELEMENT = "p";
+var timeInterval = 500;
+var SEE_MORE_CLASS = ".fss";
 var collapsed = true;
 var style = "monokai-sublime";
 
@@ -12,6 +15,11 @@ var hasCode = function(str){
 	}else{
 		return false;
 	}
+};
+
+var hasSeeMore = function(element){
+	var seeMore = $(element).find(SEE_MORE_CLASS); // See more class
+	return seeMore.length > 0;
 };
 
 var cleanString = function(str){
@@ -61,8 +69,8 @@ var parseCode = function(str){
 };
 
 var addEventsButton = function(str, element){
-	$(element).find("p").html(str);
-	var rootBlock = $(element).find("p");
+	$(element).html(str);
+	var rootBlock = $(element);
 	$(rootBlock).find("a.collapse-button").each(function() {
 		$(this).on("click", function(){
 			collapseCode(this)
@@ -80,9 +88,20 @@ var addEventsButton = function(str, element){
 	}
 };
 
+var addEventSeeMore = function(element){
+	var seeMore = $(element).find(SEE_MORE_CLASS); // See more class
+	seeMore.on("click", function(){
+		console.log("Clicked!");
+		var to = setTimeout(function(){
+			parseComments(element);
+			clearTimeout(to);
+		}, 1000)
+	});
+};
+
 var highlightElement = function(element){
 	//hljs.configure({useBR: true});
-	var rootBlock = $(element).find("p");
+	var rootBlock = $(element);
 	var codeBlocks = $(rootBlock).find("pre code");
 	codeBlocks.each(function(i, block){
 		hljs.highlightBlock(block);
@@ -112,6 +131,47 @@ var removeSeeMoreButton = function(element){
 	$(element).find(".text_exposed_hide").remove();
 };
 
+var checkPosts = function(){
+	var rootElement = $(ROOT_ELEMENT_CLASS).not(".prettycode-viewed");
+	rootElement.each(function(){
+		$(this).addClass("prettycode-viewed"); // Mark as viewed
+		// Get html string of element
+		var str = $(this).find(TEXT_CONTENT_ELEMENT).html();
+		if(hasCode(str)){ // has code?
+			removeSeeMoreButton(this); // remove See more button
+			str = cleanString(str); // remove extra element from content
+			str = parseCode(str); // parse object tag to html tag code
+			addEventsButton(str, $(this).find("p"));
+			highlightElement($(this).find("p"));
+		}
+	});
+};
+
+var parseComments = function(element){
+	var str = $(element).html();
+	if(hasCode(str)) {
+		str = str.replace(/(<([/span^>]+)>)/ig, '');
+		str = parseCode(str);
+		addEventsButton(str, $(element));
+		highlightElement($(element));
+	}
+};
+
+var checkComments = function(){
+//	(<([/span^>]+)>) regex
+	var commentElement = $(COMMENTS_ELEMENT_CLASS).not(".prettycode-comment-viewed");
+	commentElement.each(function(){
+		$(this).addClass("prettycode-comment-viewed");
+		if(!hasSeeMore(this)){
+			parseComments(this);
+		}else{
+			addEventSeeMore(this);
+		}
+
+	});
+};
+
+
 $(document).ready(function(){
 	chrome.storage.sync.get({
 		collapsed: true,
@@ -122,18 +182,7 @@ $(document).ready(function(){
 	});
 
 	setInterval(function(){
-		var rootElement = $(ROOT_ELEMENT_CLASS).not(".prettycode-viewed");
-		rootElement.each(function(){
-			$(this).addClass("prettycode-viewed"); // Mark as viewed
-			// Get html string of element
-			var str = $(this).find(TEXT_CONTENT_ELEMENT).html();
-			if(hasCode(str)){ // has code?
-				removeSeeMoreButton(this); // remove See more button
-				str = cleanString(str); // remove extra element from content
-				str = parseCode(str); // parse object tag to html tag code
-				addEventsButton(str, this);
-				highlightElement(this);
-			}
-		});
-	}, 500)
+		checkPosts();
+		checkComments();
+	}, timeInterval)
 });
