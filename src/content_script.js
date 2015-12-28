@@ -6,6 +6,8 @@ var timeInterval = 500;
 var SEE_MORE_CLASS = ".fss";
 var collapsed = true;
 var style = "monokai-sublime";
+var antialiased = false;
+var size = '12px';
 
 var hasCode = function(str){
 	try {
@@ -62,8 +64,14 @@ var parseCode = function(str){
 			m[1] = "nohighlight";
 		}
 		codeExtrated = extractCode(str, m[0], codeExtrated[2]);
+
+		var codeSize = 'font-size: '+size+';';
+		var css = 'style="'+codeSize+'"';
+		if(antialiased){
+			css = 'style="-webkit-font-smoothing: antialiased; '+codeSize+'"'
+		}
 		// Open every code
-		str = str.replace(m[0], "<div class='code-box "+style+"'><div class='view-hide-buttons'><span class='language'>"+m[1].toUpperCase()+"</span><a class='see_more_link expand-button'>Expand Code </a><a class='see_more_link collapse-button'>Collapse Code</a></div><pre><code class='"+m[1]+" code-extension'>");
+		str = str.replace(m[0], "<div class='code-box "+style+"'><div class='view-hide-buttons'><span class='language'>"+m[1].toUpperCase()+"</span><a class='see_more_link expand-button'>Expand Code </a><a class='see_more_link collapse-button'>Collapse Code</a></div><pre><code class='"+m[1]+" code-extension' "+css+">");
 		// Clean the code
 		str = str.replace(codeExtrated[1], trimCode(codeExtrated[1]));
 	}
@@ -179,10 +187,14 @@ var checkComments = function(){
 $(document).ready(function(){
 	chrome.storage.sync.get({
 		collapsed: true,
-		style: "monokai-sublime"
+		style: "monokai-sublime",
+		antialiased: false,
+		size: '12px'
 	}, function(items){
 		collapsed = !items.collapsed;
 		style = items.style;
+		size = items.size;
+		antialiased = items.antialiased
 	});
 
 	setInterval(function(){
