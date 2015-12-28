@@ -3,17 +3,21 @@ function save_options() {
 	var style = document.getElementById('style').value;
 	var collapsed = document.getElementById('collapsed').checked;
 	var antialiased = document.getElementById('antialiased').checked;
+	var size = document.getElementById('size').value;
 	chrome.storage.sync.set({
 		collapsed: collapsed,
 		style: style,
+		size: size,
 		antialiased: antialiased
 	}, function() {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
 		status.textContent = 'Options saved.';
+		status.style.display = "block";
 		setTimeout(function() {
 			status.textContent = '';
-		}, 750);
+			status.style.display = "none";
+		}, 2000);
 	});
 }
 
@@ -24,9 +28,11 @@ function restore_options() {
 	chrome.storage.sync.get({
 		collapsed: true,
 		style: "monokai-sublime",
-		antialiased: false
+		antialiased: false,
+		size: '12px'
 	}, function(items) {
 		document.getElementById('style').value = items.style;
+		document.getElementById('size').value = items.size;
 		document.getElementById('collapsed').checked = items.collapsed;
 		document.getElementById('antialiased').checked = items.antialiased;
 	});

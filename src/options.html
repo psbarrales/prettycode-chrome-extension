@@ -1,6 +1,18 @@
 <!DOCTYPE html>
 <html>
 <head><title>PrettyCode Options</title></head>
+<style>
+    div#status {
+        display: none;
+        font-size: 12px;
+        font-weight: bold;
+        background: lightgreen;
+        text-align: center;
+        /*color: white;*/
+        padding: 10px 5px;
+        border: 1px solid green;
+    }
+</style>
 <body>
 
 Code Style:
@@ -29,6 +41,22 @@ Code Style:
 
 <br><br>
 
+Code Size:
+<select id="size">
+    <option value="10px">10px</option>
+    <option value="11px">11px</option>
+    <option value="12px">12px</option>
+    <option value="13px">13px</option>
+    <option value="15px">15px</option>
+    <option value="17px">17px</option>
+    <option value="19px">19px</option>
+    <option value="20px">20px</option>
+    <option value="22px">22px</option>
+    <option value="25px">25px</option>
+</select>
+
+<br><br>
+
 <label>
     <input type="checkbox" id="collapsed">
     See code expanded
@@ -42,9 +70,11 @@ Code Style:
 </label>
 
 <br>
+<br>
 
 <div id="status"></div>
 
+<br>
 <br>
 
 <button id="save">Save</button>
