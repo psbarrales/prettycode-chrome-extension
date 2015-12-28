@@ -47,8 +47,13 @@ var extractCode = function(str, start, offset){
 
 var trimCode = function(code){
 	// FIXME: I have to find a way to clean the code
+	// Clean all excluded br
+	code = code.replace(/\<(?!\/?(br)[ >])[^>]*\>/gim, '');
+	// Clean space
 	code = code.replace(/^\s+|\s+$/gm,'');
+	// Clean br on start
 	code = code.replace(/^(<br>)*/gm,'');
+	// Clean space again
 	code = code.replace(/^\s+|\s+$/gm,'');
 	return code;
 };
