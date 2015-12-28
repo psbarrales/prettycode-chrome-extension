@@ -14,8 +14,7 @@
       "vendor/highlightjs/highlight.pack.js",
       "content_script.js"],
     "css": [
-      "styles/main.min.css",
-      "styles/styles.min.css"
+      "styles/main.min.css"
     ],
     "matches": [
       "http://*.facebook.com/*",

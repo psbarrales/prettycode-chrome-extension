@@ -16,7 +16,7 @@ gulp.task('prepare', function(){
 });
 
 gulp.task('sass', function(){
-	return gulp.src('./src/scss/**/*.scss')
+	return gulp.src('./src/scss/main.scss')
 		.pipe(sass().on('error', function(err){
 			console.error(gutil.colors.red(err));
 			cb();

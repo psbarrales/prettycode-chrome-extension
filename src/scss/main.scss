@@ -1,25 +1,29 @@
 pre {
     margin: 0;
-}
-pre code {
-    min-height: 5px !important;
-    display: block;
+    code {
+        min-height: 5px !important;
+        display: block;
+    }
 }
 .view-hide-buttons {
     border-bottom: 2px solid #9197a3;
-}
-.view-hide-buttons .language{
-    font-size: 10px;
-    font-weight: bold;
-    color: #9197a3;
-}
-.view-hide-buttons a.see_more_link{
-    float: right;
-}
-.view-hide-buttons a.hide {
-    display: none;
+    .language{
+        font-size: 10px;
+        font-weight: bold;
+        color: #9197a3;
+    }
+    a {
+        &.see_more_link{
+            float: right;
+        }
+        &.hide {
+            display: none;
+        }
+    }
 }
 
 .code-extension {
     overflow: hidden;
 }
+
+@import "styles";
