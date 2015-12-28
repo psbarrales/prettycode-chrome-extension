@@ -1,4 +1,5 @@
 # PrettyCode for Facebook
+[![Build Status](https://travis-ci.org/psbarrales/prettycode-chrome-extension.svg)](https://travis-ci.org/psbarrales/prettycode-chrome-extension)
 ## Google Chrome extension
 
 ### What does this extension?
@@ -26,9 +27,7 @@ Now on build folder we get our extension unpackaged
 ### TODO
 
 * Localization
-* More options
+* More options?
 * Unit testing
-* Allow comments of Facebook
-
 
 

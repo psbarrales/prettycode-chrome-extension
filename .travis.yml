@@ -8,3 +8,7 @@ script:
   - bower install
   - gulp prepare
   - gulp build
+branches:
+  only:
+    - master
+    - develop
