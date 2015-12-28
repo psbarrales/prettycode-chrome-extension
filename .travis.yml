@@ -1,0 +1,10 @@
+before_install:
+  - gem install sass
+before_script:
+  - npm install -g gulp
+  - npm install -g bower
+script:
+  - npm install
+  - bower install
+  - gulp prepare
+  - gulp build
