@@ -2,9 +2,11 @@
 function save_options() {
 	var style = document.getElementById('style').value;
 	var collapsed = document.getElementById('collapsed').checked;
+	var antialiased = document.getElementById('antialiased').checked;
 	chrome.storage.sync.set({
 		collapsed: collapsed,
-		style: style
+		style: style,
+		antialiased: antialiased
 	}, function() {
 		// Update status to let user know options were saved.
 		var status = document.getElementById('status');
@@ -21,10 +23,12 @@ function restore_options() {
 	// Use default value color = 'red' and likesColor = true.
 	chrome.storage.sync.get({
 		collapsed: true,
-		style: "monokai-sublime"
+		style: "monokai-sublime",
+		antialiased: false
 	}, function(items) {
 		document.getElementById('style').value = items.style;
 		document.getElementById('collapsed').checked = items.collapsed;
+		document.getElementById('antialiased').checked = items.antialiased;
 	});
 }
 document.addEventListener('DOMContentLoaded', restore_options);

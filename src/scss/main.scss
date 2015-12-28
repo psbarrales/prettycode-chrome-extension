@@ -8,9 +8,10 @@ pre {
 .view-hide-buttons {
     border-bottom: 2px solid #9197a3;
     .language{
-        font-size: 10px;
+        font-size: 11px;
         font-weight: bold;
         color: #9197a3;
+        -webkit-font-smoothing: antialiased;
     }
     a {
         &.see_more_link{
