@@ -8,11 +8,15 @@ var collapsed = true;
 var style = "monokai-sublime";
 
 var hasCode = function(str){
-	if(typeof str != "undefined") {
-		var codeInit = str.match(/\{code:([a-zA-Z]*)}/ig);
-		var codeEnd = str.match(/\{\/code}/ig);
-		return (codeInit.length > 0 && codeEnd.length > 0);
-	}else{
+	try {
+		if (typeof str != "undefined") {
+			var codeInit = str.match(/\{code:([a-zA-Z]*)}/ig);
+			var codeEnd = str.match(/\{\/code}/ig);
+			return (codeInit.length > 0 && codeEnd.length > 0);
+		} else {
+			return false;
+		}
+	}catch (e){
 		return false;
 	}
 };
