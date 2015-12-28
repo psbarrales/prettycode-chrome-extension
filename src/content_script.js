@@ -154,7 +154,7 @@ var checkPosts = function(){
 var parseComments = function(element){
 	var str = $(element).html();
 	if(hasCode(str)) {
-		str = str.replace(/(<([/span^>]+)>)/ig, '');
+		str = str.replace(/(<([/]*span)>)/ig, '');
 		str = parseCode(str);
 		addEventsButton(str, $(element));
 		highlightElement($(element));
