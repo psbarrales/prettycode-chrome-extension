@@ -1,6 +1,7 @@
 # PrettyCode for Facebook
 [![Build Status](https://travis-ci.org/psbarrales/prettycode-chrome-extension.svg)](https://travis-ci.org/psbarrales/prettycode-chrome-extension)
-## Google Chrome extension
+##### [Google Chrome extension](https://chrome.google.com/webstore/detail/prettycode/hkdhnimajlmbhpfmmnpciiobjfpadhbb)
+#### [Firefox Addons](https://addons.mozilla.org/es/firefox/addon/prettycode/)
 
 ### What does this extension?
 
