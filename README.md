@@ -6,6 +6,11 @@
 
 This extension allows you to write code in the states of Facebook for share with your friends
 
+### How?
+Start your code block whit {code:javascript}
+And end the block with {/code}
+![Example](/example.code.png)
+
 ### Requirements
 
 * [npm](https://www.npmjs.com/)
